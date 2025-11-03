@@ -1,0 +1,151 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: #212121;
+    display: flex;
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+aside{
+    height: 100%;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 60px;
+    border: 1px solid #FFFFFF80;
+}
+
+/* Varios tamanhos por causa dos tamanhos comuns das imagens */
+aside .msg{
+    width: 50px;
+    height: 50px;
+}
+aside .status{
+    width: 45px;
+    height: 45px;
+}
+aside .canais{
+    width: 35px;
+    height: 35px;
+}
+aside .comunidades{
+    width: 40px;
+    height: 40px;
+}
+.superior{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #FFFFFF80;
+    padding-bottom: 10px;
+}
+
+.inferior{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #FFFFFF80;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 20px;
+}
+
+.inferior img{
+    width: 20px;
+    height: 20px;
+}
+
+.perfil{
+    height: 20px;
+    width: 20px;
+    border: 2px solid #FFFFFF80;
+    border-radius: 50px;
+}
+
+
+/* Lista de contatos */
+.lista-contatos{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 20px;
+    padding: 20px;
+}
+
+.lista-contatos .pesquisa{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.lista-contatos h1{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.lista-contatos .titulo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.titulo .icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+.titulo img{
+    width: 20px;
+    height: 20px;
+}
+
+.barra{
+    width: 100%;
+    height: 30px;
+    background-color: #3b3b3b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    gap: 10px;
+}
+
+.barra input{
+    background-color: inherit;
+    width: 80%;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.barra img{
+    width: 15px;
+    height: 15px;
+}
+
+.botoes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.botoes div{
+    border: 1px solid #FFFFFF80;
+    border-radius: 20px;
+    color: #FFFFFF80;
+    font-weight: 700;
+    padding: 5px;
+    font-size: 0.8rem;
+}
