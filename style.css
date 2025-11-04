@@ -1,10 +1,10 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100%;
     height: 100vh;
     background-color: #212121;
@@ -12,7 +12,7 @@ body{
     font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
-aside{
+aside {
     height: 100%;
     width: 5%;
     display: flex;
@@ -20,49 +20,52 @@ aside{
     align-items: center;
     justify-content: space-between;
     width: 60px;
-    border: 1px solid #FFFFFF80;
+    border-right: 1px solid #FFFFFF40;
 }
 
 /* Varios tamanhos por causa dos tamanhos comuns das imagens */
-aside .msg{
+aside .msg {
     width: 50px;
     height: 50px;
 }
-aside .status{
+
+aside .status {
     width: 45px;
     height: 45px;
 }
-aside .canais{
+
+aside .canais {
     width: 35px;
     height: 35px;
 }
-aside .comunidades{
+
+aside .comunidades {
     width: 40px;
     height: 40px;
 }
-.superior{
+
+.superior {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom: 1px solid #FFFFFF80;
+    border-bottom: 1px solid #FFFFFF50;
     padding-bottom: 10px;
 }
 
-.inferior{
+.inferior {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #FFFFFF80;
     padding-top: 20px;
     padding-bottom: 20px;
     gap: 20px;
 }
 
-.inferior img{
+.inferior img {
     width: 20px;
     height: 20px;
 }
 
-.perfil{
+.perfil {
     height: 20px;
     width: 20px;
     border: 2px solid #FFFFFF80;
@@ -71,45 +74,49 @@ aside .comunidades{
 
 
 /* Lista de contatos */
-.lista-contatos{
+
+.lista-contatos {
     display: flex;
     flex-direction: column;
     width: 25%;
-    gap: 20px;
-    padding: 20px;
+    gap: 25px;
+    border-right: 1px solid #FFFFFF40;
 }
 
-.lista-contatos .pesquisa{
+.lista-contatos .pesquisa {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 20px;
     width: 100%;
 }
 
-.lista-contatos h1{
+.lista-contatos h1 {
     color: white;
     font-size: 1.5rem;
 }
 
-.lista-contatos .titulo{
+.lista-contatos .titulo {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
 }
-.titulo .icons{
+
+.titulo .icons {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     justify-content: space-evenly;
 }
-.titulo img{
+
+.titulo img {
     width: 20px;
     height: 20px;
 }
 
-.barra{
+.barra {
     width: 100%;
     height: 30px;
     background-color: #3b3b3b;
@@ -120,7 +127,7 @@ aside .comunidades{
     gap: 10px;
 }
 
-.barra input{
+.barra input {
     background-color: inherit;
     width: 80%;
     border: none;
@@ -128,24 +135,55 @@ aside .comunidades{
     color: white;
 }
 
-.barra img{
+.barra img {
     width: 15px;
     height: 15px;
 }
 
-.botoes{
+.botoes {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-    gap: 10px;
+    gap: 30px;
 }
 
-.botoes div{
+.botoes div {
+    cursor: pointer;
     border: 1px solid #FFFFFF80;
     border-radius: 20px;
     color: #FFFFFF80;
     font-weight: 700;
-    padding: 5px;
+    padding: 7px;
     font-size: 0.8rem;
 }
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contato {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border: 1px solid #FFFFFF50;
+}
+
+.foto {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #3b3b3b;
+}
+
+
+/* main {
+    height: 100%;
+    width: 75%;
+    background-image: url('./img/background.png');
+    background-repeat: repeat;
+} */
