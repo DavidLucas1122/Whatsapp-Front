@@ -14,12 +14,11 @@ body {
 
 aside {
     height: 100%;
-    width: 5%;
+    width: 4%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 60px;
     border-right: 1px solid #FFFFFF40;
 }
 
@@ -78,9 +77,10 @@ aside .comunidades {
 .lista-contatos {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 30%;
     gap: 25px;
     border-right: 1px solid #FFFFFF40;
+    background-color: #181818;
 }
 
 .lista-contatos .pesquisa {
@@ -143,9 +143,8 @@ aside .comunidades {
 .botoes {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    gap: 30px;
+    gap: 10px;
 }
 
 .botoes div {
@@ -156,6 +155,11 @@ aside .comunidades {
     font-weight: 700;
     padding: 7px;
     font-size: 0.8rem;
+    transition: ease 0.1s;
+}
+
+.botoes div:hover {
+    background-color: #365045;
 }
 
 .lista {
@@ -170,7 +174,8 @@ aside .comunidades {
     display: flex;
     align-items: center;
     padding-left: 20px;
-    border: 1px solid #FFFFFF50;
+    border-top: 1px solid #FFFFFF50;
+    border-bottom: 1px solid #FFFFFF50;
 }
 
 .foto {
@@ -181,9 +186,35 @@ aside .comunidades {
 }
 
 
-/* main {
+main {
+    position: relative;
     height: 100%;
     width: 75%;
-    background-image: url('./img/background.png');
+    display: flex;
+    justify-content: center;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1) url('./img/background.png');
     background-repeat: repeat;
-} */
+    background-position: center center;
+    background-size: 620px 620px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.mensagens {
+    width: 90%;
+    height: 100%;
+    gap: 20px;
+}
+
+main .mensagem_contato {
+    background-color: #fff;
+}
+
+main .messagem_perfil {
+    background-color: #fff;
+}
