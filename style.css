@@ -147,6 +147,7 @@ aside .comunidades {
     align-items: center;
     width: 100%;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .botoes div {
@@ -177,36 +178,108 @@ aside .comunidades {
 
 
 .contato {
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
     width: 100%;
     height: 100px;
     padding: 10px;
     display: flex;
     align-items: center;
+    gap: 10px;
     padding-left: 20px;
-    border-top: 1px solid #FFFFFF50;
-    border-bottom: 1px solid #FFFFFF50;
+     transition: background-color 0.2s ease;
 }
 
-.foto {
+.contato:hover {
+    background-color: #3a3d3c;
+}
+
+.contato p {
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+}
+
+.contato .foto {
     border-radius: 50px;
     width: 50px;
     height: 50px;
     border: 2px solid #3b3b3b;
 }
 
+.foto img {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+}
+
 
 main {
     position: relative;
-    height: 100vh;
+    height: 100vh; 
+    padding-bottom: 10px;
     width: 75%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+main .header {
+    z-index: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    background-color: #181818;
+}
+
+ .header .foto {
+    display: flex;
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #3b3b3b;
+}
+.foto img{
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.icons .video{
+    height: 25px;
+    width: 25px;
+}
+.icons .search{
+    height: 20px;
+    width: 20px;
+}
+.icons .more{
+    height: 20px;
+    width: 20px;
+}
+
+main .usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .background {
+    height: 100vh;
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.1) url('./img/background.png');
+    background: url('./img/background.png');
     background-repeat: repeat;
     background-position: center center;
     background-size: 600px 600px;
@@ -215,15 +288,78 @@ main {
 }
 
 .mensagens {
-    width: 90%;
-    height: 100%;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    height: 100vh;
+    width: 100%;
+    gap: 10px;
+    padding: 0 50px;
+    color: white;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a #181818;
 }
 
-main .mensagem_contato {
-    background-color: #fff;
+/* Mensagens do contato (esquerda) */
+.mensagens .mensagem_contato {
+    align-self: flex-start;
+    max-width: 50%;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background-color: #313433;
+    padding: 10px 14px;
+    border-radius: 0 12px 12px 12px;
 }
 
-main .messagem_perfil {
-    background-color: #fff;
+
+.mensagens .mensagem_usuario {
+    align-self: flex-end;
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+    max-width: 50%;
+    word-wrap: break-word;
+    background-color: #005C4B;
+    padding: 10px 14px;
+    border-radius: 12px 0 12px 12px;
+}
+
+.mensagens .texto {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 0.8rem;
+}
+
+.mensagens .hora {
+    color: #FFFFFF80;
+    font-size: 0.75rem;
+    align-self: flex-end;
+}
+
+.footer{
+    z-index: 1;
+    align-self: center;
+    width: 98%;
+    border-radius: 30px;
+    background-color: #313433;
+    height: 70px;
+    display: flex;
+    gap: 10px;
+}
+
+.footer .inputs{
+    display: flex;
+    align-items: center;
+}
+
+.inputs input{
+    background-color: inherit;
+    width: 80%;
+    border: none;
+    outline: none;
+    color: white;
 }
