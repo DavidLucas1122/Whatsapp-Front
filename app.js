@@ -2,15 +2,15 @@
 
 
 
-async function listagemContatos() {
-    const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/11987876567/contacts`
+async function listagemContatos(numeroUser) {
+    const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/${numeroUser}/contacts`
     const response = await fetch(url)
     const dados = await response.json()
-    mostrarListaContatos(dados.contact)
+    mostrarListaContatos(dados.contact, dados.user.numero)
 }
 
 
-async function mostrarListaContatos(listaContatos) {
+async function mostrarListaContatos(listaContatos, numeroUser) {
     const container = document.getElementById('lista-contatos')
 
     container.replaceChildren()
@@ -32,25 +32,27 @@ async function mostrarListaContatos(listaContatos) {
         containerImage.append(img)
         container.appendChild(div)
 
-        div.addEventListener('click', () => buscarConversasUsuarioContato(contato.numero))
+        div.addEventListener('click', function () {
+            buscarConversasUsuarioContato(numeroUser, contato.numero)
+            document.getElementById("conversa").style.display = "flex"
+        })
     })
 }
 
-async function buscarConversasUsuarioContato(numeroContato) {
-    const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/conversation?numberUser=11987876567&numberContact=${numeroContato}`
+async function buscarConversasUsuarioContato(numeroUser, numeroContato) {
+    const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/conversation?numberUser=${numeroUser}&numberContact=${numeroContato}`
     const response = await fetch(url)
     const dados = await response.json()
     mostrarConversa(dados.conversation[0])
 }
-    
 
 
-async function mostrarConversa(conversation) {
 
+function mostrarConversa(conversation) {
     const container = document.getElementById('mensagens')
-    const infoUser = document.getElementById('info-user')
+    const infoContact = document.getElementById('info-contact')
 
-    infoUser.replaceChildren()
+    infoContact.replaceChildren()
 
     const divFoto = document.createElement('div')
     divFoto.classList.add('foto')
@@ -62,7 +64,7 @@ async function mostrarConversa(conversation) {
     nome.textContent = conversation.nome
 
     divFoto.append(foto)
-    infoUser.append(divFoto, nome)
+    infoContact.append(divFoto, nome)
 
     container.replaceChildren()
 
@@ -87,6 +89,40 @@ async function mostrarConversa(conversation) {
     })
 }
 
+async function buscarInfosContato(numeroUser) {
+    const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/${numeroUser}/profile`
+    const response = await fetch(url)
+    const dados = await response.json()
+    const foto = document.getElementById('profile')
+    foto.src = dados.users[0].image
+
+    foto.addEventListener('click', function () {
+        mostrarInfosPerfil(dados.users[0])
+        document.getElementById("conversa").style.display = "none"
+        document.getElementById("usuario").style.display = "flex"
+    })
+}
+
+function mostrarInfosPerfil(user) {
+    const container = document.getElementById('container-infos')
+    
+    const img = document.createElement('img')
+    img.src = user.image
+
+    const divText = document.createElement('div')
+    divText.classList.add('texts')
+
+    const name = document.createElement('h3')
+    name.textContent = user.nickname
+
+    const account = document.createElement('p')
+    account.textContent = user.account
+
+    const number = document.createElement('p')
+    number.textContent = user.number
+    divText.append(name, account, number)
+    container.append(img, divText)
+}
 
 
 
@@ -96,5 +132,5 @@ async function mostrarConversa(conversation) {
 
 
 
-
-listagemContatos()
+listagemContatos('11987876567')
+buscarInfosContato('11987876567')

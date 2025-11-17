@@ -19,7 +19,9 @@
         </div>
         <div class="inferior">
             <img src="./img/setting.png" alt="">
-            <div class=perfil></div>
+            <div class=perfil>
+                <img id="profile"></img>
+            </div>
         </div>
     </aside>
     <section class="lista-contatos">
@@ -75,28 +77,40 @@
         </div>
     </section>
     <main>
-        <div class="header">
-            <div id="info-user" class="usuario">
-                <!-- <div class="foto"></div>
-                <p>Algo</p> -->
+        <div id="conversa" class="conversa">
+            <div id="header" class="header">
+                <div id="info-contact" class="usuario">
+                </div>
+                <div class="icons">
+                    <img class="video" src="./img/video.png" alt="">
+                    <img class="search" src="./img/search.png" alt="">
+                    <img class="more" src="./img/more.png" alt="">
+                </div>
             </div>
-            <div class="icons">
-                <img class="video" src="./img/video.png" alt="">
-                <img class="search" src="./img/search.png" alt="">
-                <img class="more" src="./img/more.png" alt="">
+            <div class="background"></div>
+
+            <div class="mensagens" id="mensagens"></div>
+
+            <div id="enviar" class="enviar">
+                <div class="inputs">
+                    <img src="./img/add.png" alt="">
+                    <img src="./img/smiling-emoticon-square-face.png" alt="">
+                    <input type="text" placeholder="Digite uma mensagem">
+                </div>
+                <img src="./img/vertical.png" alt="">
             </div>
         </div>
-        <div class="background"></div>
-
-        <div class="mensagens" id="mensagens"></div>
-        <div class="footer">
-            <div class="inputs">
-                <img src="./img/add.png" alt="">
-                <img src="" alt="">
-                <input type="text" placeholder="Digite uma mensagem">
+        <div id="usuario" class="informacoes-usuario" style="display: none;">
+            <div id="container-infos" class="informacoes">
+                    <!-- <img src="" alt="">
+                    <div class="texts">
+                        <h3>Nome</h3>
+                        <p>Nickname</p>
+                        <p>11 99999-9999</p>
+                    </div> -->
             </div>
-            <img src="" alt="">
         </div>
     </main>
 </body>
+
 </html>
