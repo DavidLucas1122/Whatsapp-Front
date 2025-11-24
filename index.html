@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./app.js" defer></script>
+    <script src="./app.js" defer type="module"></script>
 </head>
 
 <body>
@@ -83,7 +83,10 @@
                 </div>
                 <div class="icons">
                     <img class="video" src="./img/video.png" alt="">
-                    <img class="search" src="./img/search.png" alt="">
+                    <div class="filtroPalavra">
+                        <img class="search" src="./img/search.png" id="lupa" alt="">
+                        <input class="barraPalavra" type="text" placeholder="Digite uma palavra" id="wordKey">
+                    </div>
                     <img class="more" src="./img/more.png" alt="">
                 </div>
             </div>
@@ -102,12 +105,13 @@
         </div>
         <div id="usuario" class="informacoes-usuario" style="display: none;">
             <div id="container-infos" class="informacoes">
-                    <!-- <img src="" alt="">
+                <!-- <img src="" alt="">
                     <div class="texts">
                         <h3>Nome</h3>
                         <p>Nickname</p>
                         <p>11 99999-9999</p>
                     </div> -->
+                <!-- <select class="troca-usuario" id="listaUsuarios"></select> -->
             </div>
         </div>
     </main>

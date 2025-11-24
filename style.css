@@ -16,6 +16,7 @@ body {
 aside {
     height: 100vh;
     width: 4%;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,7 +73,7 @@ aside .comunidades {
     border-radius: 50px;
 }
 
-.perfil img{
+.perfil img {
     height: 100%;
     width: 100%;
     border-radius: 50px;
@@ -227,9 +228,9 @@ main {
     width: 75%;
 }
 
-.conversa{
+.conversa {
     display: none;
-    height: 100vh; 
+    height: 100vh;
     flex-direction: column;
     gap: 30px;
     justify-content: space-between;
@@ -248,33 +249,38 @@ main .header {
     background-color: #181818;
 }
 
- .header .foto {
+.header .foto {
     display: flex;
     border-radius: 50px;
     width: 45px;
     height: 45px;
     border: 2px solid #3b3b3b;
 }
-.foto img{
+
+.foto img {
     border-radius: 50px;
     width: 45px;
     height: 45px;
 }
 
-.icons{
+.icons {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.icons .video{
+
+.icons .video {
     height: 25px;
     width: 25px;
 }
-.icons .search{
+
+.icons .search {
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
-.icons .more{
+
+.icons .more {
     height: 20px;
     width: 20px;
 }
@@ -349,7 +355,7 @@ main .usuario {
     align-self: flex-end;
 }
 
-.enviar{
+.enviar {
     z-index: 1;
     display: flex;
     align-self: center;
@@ -362,14 +368,14 @@ main .usuario {
     padding-right: 20px;
 }
 
-.enviar .inputs{
+.enviar .inputs {
     display: flex;
     padding-left: 15px;
     align-items: center;
     gap: 8px;
 }
 
-.enviar input{
+.enviar input {
     background-color: inherit;
     padding-left: 5px;
     width: 80%;
@@ -378,12 +384,12 @@ main .usuario {
     color: white;
 }
 
-.enviar img{
+.enviar img {
     height: 20px;
     width: 20px;
 }
 
-.informacoes-usuario{
+.informacoes-usuario {
     width: 100%;
     height: 100%;
     display: flex;
@@ -404,19 +410,57 @@ main .usuario {
     gap: 10px;
 }
 
-.informacoes-usuario img{
+.informacoes-usuario img {
     height: 150px;
     width: 150px;
     border-radius: 50%;
     border: 1px solid;
 }
 
-.informacoes-usuario .texts{
+.informacoes-usuario .texts {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.informacoes-usuario p{
+.informacoes-usuario p {
     color: #a5a6a6;
+}
+
+.troca-usuario {
+    padding: 8px 10px;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #3b3b3b;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.filtroPalavra {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#lupa {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.barraPalavra {
+    display: none;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    width: 160px;
+    transition: 0.3s;
+    background-color: #313433;
+    color: white;
 }

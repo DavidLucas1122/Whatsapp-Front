@@ -1,6 +1,7 @@
 'use strict'
 
-
+let numeroUserAtual = null
+let numeroContactAtual = null
 
 async function listagemContatos(numeroUser) {
     const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/${numeroUser}/contacts`
@@ -33,6 +34,9 @@ async function mostrarListaContatos(listaContatos, numeroUser) {
         container.appendChild(div)
 
         div.addEventListener('click', function () {
+            numeroUserAtual = numeroUser
+            numeroContactAtual = contato.numero
+
             buscarConversasUsuarioContato(numeroUser, contato.numero)
             document.getElementById("conversa").style.display = "flex"
         })
@@ -53,6 +57,7 @@ function mostrarConversa(conversation) {
     const infoContact = document.getElementById('info-contact')
 
     infoContact.replaceChildren()
+    container.replaceChildren()
 
     const divFoto = document.createElement('div')
     divFoto.classList.add('foto')
@@ -65,8 +70,6 @@ function mostrarConversa(conversation) {
 
     divFoto.append(foto)
     infoContact.append(divFoto, nome)
-
-    container.replaceChildren()
 
     conversation.message.forEach(mensagem => {
         const div = document.createElement("div")
@@ -85,19 +88,20 @@ function mostrarConversa(conversation) {
 
         div.append(texto, hora)
         container.append(div)
-
     })
 }
 
-async function buscarInfosContato(numeroUser) {
+async function buscarInfosUser(numeroUser) {
     const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/${numeroUser}/profile`
     const response = await fetch(url)
     const dados = await response.json()
     const foto = document.getElementById('profile')
     foto.src = dados.users[0].image
+    mostrarInfosPerfil(dados.users[0])
+    trocarUsuario()
+
 
     foto.addEventListener('click', function () {
-        mostrarInfosPerfil(dados.users[0])
         document.getElementById("conversa").style.display = "none"
         document.getElementById("usuario").style.display = "flex"
     })
@@ -105,7 +109,9 @@ async function buscarInfosContato(numeroUser) {
 
 function mostrarInfosPerfil(user) {
     const container = document.getElementById('container-infos')
-    
+
+    container.replaceChildren()
+
     const img = document.createElement('img')
     img.src = user.image
 
@@ -125,12 +131,101 @@ function mostrarInfosPerfil(user) {
 }
 
 
+async function trocarUsuario() {
+    const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/`
+    const response = await fetch(url)
+    const dados = await response.json()
+    mostrarOpcoesUsuarios(dados.users)
+}
 
+function mostrarOpcoesUsuarios(usuarios) {
+    const container = document.getElementById('container-infos')
+    const select = document.createElement("select")
+    select.classList.add('troca-usuario')
+    select.textContent = "Trocar Usuário"
 
+    select.replaceChildren()
 
+    const placeholder = document.createElement("option")
+    placeholder.textContent = "Trocar Usuário"
+    placeholder.disabled = true
+    placeholder.selected = true
+    select.append(placeholder)
+
+    select.addEventListener("change", () => {
+        const numero = select.value
+        listagemContatos(numero)
+        buscarInfosUser(numero)
+    })
+
+    container.append(select)
+
+    usuarios.forEach(u => {
+        const option = document.createElement('option')
+        option.value = u.number
+        option.textContent = u.account
+
+        select.append(option)
+    })
+}
+
+//Filtragem de palavra
+const lupa = document.getElementById('lupa')
+const barra = document.getElementById('wordKey')
+
+lupa.addEventListener('click', () => {
+    barra.style.display = "flex"
+    barra.focus()
+})
+
+barra.addEventListener('keydown', (event) => {
+    if (event.key === "Enter") {
+        if (barra.value === ""){
+            buscarConversasUsuarioContato(numeroUserAtual, numeroContactAtual)
+        } else
+        filtragemPalavra(numeroUserAtual, numeroContactAtual, barra.value)
+    }
+})
+
+async function filtragemPalavra(numeroUser, numeroContact, palavra) {
+    console.log(palavra)
+    const url = `https://api-whatsapp-2-b1z5.onrender.com/v1/whatsapp/wordkey?numberUser=${numeroUser}&numberContact=${numeroContact}&wordKey=${palavra}`
+    const response = await fetch(url)
+    const dados = await response.json()
+
+    mostrarMensagemFiltrada(dados.message)
+}
+
+function mostrarMensagemFiltrada(filtrada) {
+
+    const container = document.getElementById('mensagens')
+
+    container.replaceChildren()
+
+    filtrada.forEach(mensagem => {
+        console.log(mensagem)
+
+        const div = document.createElement("div")
+        if (mensagem.sender == 'me') {
+            div.classList.add('mensagem_usuario')
+        } else {
+            div.classList.add("mensagem_contato")
+        }
+        const texto = document.createElement("p")
+        texto.classList.add('texto')
+        texto.textContent = mensagem.content
+
+        const hora = document.createElement("p")
+        hora.classList.add('hora')
+        hora.textContent = mensagem.time
+
+        div.append(texto, hora)
+        container.append(div)
+    })
+}
 
 
 
 
 listagemContatos('11987876567')
-buscarInfosContato('11987876567')
+buscarInfosUser('11987876567')
